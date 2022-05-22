@@ -1,13 +1,17 @@
-import Reacy from "react";
+import React from "react";
 import TodoListItem from "./TodoListItem";
+import NewTodoForm from "./NewTodoForm";
 import './TodoList.css';
 
-const TodoList = ({todos}) => {
+const TodoList = ({todos = [{text: "Hello"}]}) => {
+    return(
     <div className="list-wrapper">
-        {todos.map(todo => {
-            <TodoListItem todo={todo}/>
-        })}
+        <NewTodoForm />
+        {todos.map((todo, i) =>
+             <div key={todo.text.toString() + i}>   
+                <TodoListItem todo={todo}  />
+             </div>)}
     </div>
-}
+)}
 
 export default TodoList;
